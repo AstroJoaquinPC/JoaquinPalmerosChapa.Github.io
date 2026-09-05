@@ -16,11 +16,11 @@ export const projects = [
       { label: 'Toolchain', value: 'VS Code + PlatformIO' },
     ],
     images: [
-      // { src: 'photos/via/board-front.jpg', caption: 'Assembled flight computer PCB' },
-      // { src: 'photos/via/hopper-bench.jpg', caption: 'EDF Hopper on the test bench' },
+       { src: 'photos/via/board-front.jpg', caption: 'Assembled flight computer PCB' },
+       { src: 'photos/via/hopper-bench.jpg', caption: 'EDF Hopper on the test bench' },
     ],
     models: [
-      // { name: 'Test', obj: 'models\via\EDFAsembly.obj', mtl: 'models\via\EDFAsembly.mtl' },
+       { name: 'Test', obj: 'models\via\EDFAsembly.obj', mtl: 'models\via\EDFAsembly.mtl' },
     ],
   },
   {
