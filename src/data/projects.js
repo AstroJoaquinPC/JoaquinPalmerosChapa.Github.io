@@ -1,18 +1,19 @@
 export const projects = [
   {
-    slug: 'V.I.A (Vane Integrated Avionics)',
-    code: 'V.I.A (Vane Integrated Avionics)',
-    title: 'V.I.A (Vane Integrated Avionics)',
-    summary: 'Four-servo TVC flight controller on ESP32 with dual-core FreeRTOS.',
+    slug: 'via',
+    code: 'VIA-01',
+    title: 'V.I.A. — Vane Integrated Avionics',
+    summary: 'Custom flight computer for vane-based TVC on an EDF Hopper.',
     description:
       'V.I.A. (Vane Integrated Avionics) is a custom flight computer I designed and built to provide full attitude and position control of an EDF Hopper through vane based thrust vector control. The system is built around a custom PCB I engineered in KiCad, integrating a BNO08x IMU, status LEDs, and an ESP32 microcontroller, along with power distribution, I2C sensor interfacing, and real time wireless telemetry broadcasting over ESP-NOW. On the firmware side, I developed cascaded PID control logic in C++ running on a dedicated 200 Hz FreeRTOS control loop split across the ESP32s dual cores to regulate vehicle altitude, attitude, and position, with SD card data logging built in for post flight analysis and control tuning.',
+    tags: ['ESP32-S3', 'Custom PCB (KiCad)', 'FreeRTOS', 'C++', 'BNO08x IMU', 'ESP-NOW', 'Cascaded PID'],
     specs: [
       { label: 'Compute', value: 'ESP32-S3' },
       { label: 'Attitude sensing', value: 'BNO08x IMU over I2C' },
       { label: 'Telemetry link', value: 'ESP-NOW to browser dashboard' },
-      { label: 'Data logging', value: 'Flash Chip for immdiete data logging with a transfer over to MicroSD during a landed state' },
-      { label: 'Actuation', value: '4 Digital Servos direct the EDFs airflow' },
-      { label: 'Toolchain', value: 'VScode + PlatformIO' },
+      { label: 'Data logging', value: 'Flash chip for immediate logging, transferred to microSD once landed' },
+      { label: 'Actuation', value: '4 digital servos directing the EDF airflow' },
+      { label: 'Toolchain', value: 'VS Code + PlatformIO' },
     ],
   },
   {
