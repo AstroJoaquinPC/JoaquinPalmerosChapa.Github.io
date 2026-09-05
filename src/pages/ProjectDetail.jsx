@@ -1,7 +1,11 @@
 import { Link, useParams, Navigate } from 'react-router-dom'
+import { Suspense, lazy } from 'react'
 import { getProjectBySlug } from '../data/projects.js'
 import Footer from '../components/Footer.jsx'
+import Gallery from '../components/Gallery.jsx'
 import useScrollToHash from '../hooks/useScrollToHash.js'
+
+const ModelSection = lazy(() => import('../components/ModelSection.jsx'))
 
 export default function ProjectDetail() {
   useScrollToHash()
@@ -38,6 +42,24 @@ export default function ProjectDetail() {
             </div>
           ))}
         </div>
+
+        {project.models && project.models.length > 0 && (
+          <Suspense
+            fallback={
+              <div className="model-section">
+                <h2>CAD model</h2>
+                <div className="model-viewer">
+                  <div className="model-overlay" style={{ position: 'static', height: '420px' }}>
+                    Loading viewer…
+                  </div>
+                </div>
+              </div>
+            }
+          >
+            <ModelSection models={project.models} />
+          </Suspense>
+        )}
+        <Gallery images={project.images} />
       </section>
       <Footer />
     </>

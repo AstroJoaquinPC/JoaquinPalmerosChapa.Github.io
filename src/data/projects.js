@@ -15,6 +15,13 @@ export const projects = [
       { label: 'Actuation', value: '4 digital servos directing the EDF airflow' },
       { label: 'Toolchain', value: 'VS Code + PlatformIO' },
     ],
+    images: [
+      // { src: 'photos/via/board-front.jpg', caption: 'Assembled flight computer PCB' },
+      // { src: 'photos/via/hopper-bench.jpg', caption: 'EDF Hopper on the test bench' },
+    ],
+    models: [
+      // { name: 'Test', obj: 'models\via\EDFAsembly.obj', mtl: 'models\via\EDFAsembly.mtl' },
+    ],
   },
   {
     slug: 'edf-02',
@@ -30,6 +37,8 @@ export const projects = [
       { label: 'Aero modeling', value: 'Fin force from EDF exhaust velocity' },
       { label: 'Planned validation', value: 'ANSYS Fluent CFD' },
     ],
+    images: [],
+    models: [],
   },
   {
     slug: 'rf-01',
@@ -46,6 +55,8 @@ export const projects = [
       { label: 'Flight profile', value: 'Vertical boost/coast, possible tumble near apogee, vertical under chute' },
       { label: 'Antenna type', value: 'Turnstile / cloverleaf, circularly polarized' },
     ],
+    images: [],
+    models: [],
   },
   {
     slug: 'gse-01',
@@ -61,6 +72,8 @@ export const projects = [
       { label: 'Pressure rating', value: '~6,000 psi hose assemblies' },
       { label: 'Scope', value: 'Relief valve integration, feed system + GSE assembly/integration' },
     ],
+    images: [],
+    models: [],
   },
 ]
 
