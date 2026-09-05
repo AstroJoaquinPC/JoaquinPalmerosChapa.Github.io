@@ -6,18 +6,17 @@ export const projects = [
     summary: 'Custom flight computer for vane-based TVC on an EDF Hopper.',
     description:
       'V.I.A. (Vane Integrated Avionics) is a custom flight computer I designed and built to provide full attitude and position control of an EDF Hopper through vane based thrust vector control. The system is built around a custom PCB I engineered in KiCad, integrating a BNO08x IMU, status LEDs, and an ESP32 microcontroller, along with power distribution, I2C sensor interfacing, and real time wireless telemetry broadcasting over ESP-NOW. On the firmware side, I developed cascaded PID control logic in C++ running on a dedicated 200 Hz FreeRTOS control loop split across the ESP32s dual cores to regulate vehicle altitude, attitude, and position, with SD card data logging built in for post flight analysis and control tuning.',
-    tags: ['ESP32-S3', 'Custom PCB (KiCad)', 'FreeRTOS', 'C++', 'BNO08x IMU', 'ESP-NOW', 'Cascaded PID'],
+    tags: ['ESP32-S3', 'KiCad', 'C++', 'BNO08x IMU', 'ESP-NOW', 'PID Controllers'],
     specs: [
-      { label: 'Compute', value: 'ESP32-S3' },
-      { label: 'Attitude sensing', value: 'BNO08x IMU over I2C' },
-      { label: 'Telemetry link', value: 'ESP-NOW to browser dashboard' },
-      { label: 'Data logging', value: 'Flash chip for immediate logging, transferred to microSD once landed' },
+      { label: 'Microcontroller', value: 'ESP32-S3' },
+      { label: 'Sensors', value: 'BNO08x IMU over I2C' },
+      { label: 'Telemetry', value: 'Transmitted to another ESP-32 Using ESP-Now which hosts a webserver' },
+      { label: 'Data logging', value: 'Flash chip for immediate logging, transferred to microSD once in stable state' },
       { label: 'Actuation', value: '4 digital servos directing the EDF airflow' },
       { label: 'Toolchain', value: 'VS Code + PlatformIO' },
     ],
     images: [
-       { src: 'photos/via/board-front.jpg', caption: 'Assembled flight computer PCB' },
-       { src: 'photos/via/hopper-bench.jpg', caption: 'EDF Hopper on the test bench' },
+       { src: 'photos/via/VIA-Disassemble.jpg', caption: 'Bare PCB' },
     ],
     models: [
        { name: 'Test', obj: 'models/via/EDFAsembly.obj', mtl: 'models/via/EDFAsembly.mtl' },
