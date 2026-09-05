@@ -1,21 +1,18 @@
 export const projects = [
   {
-    slug: 'tvc-04',
-    code: 'TVC-04',
-    title: 'ESP32 Thrust Vector Control Flight Controller',
+    slug: 'V.I.A (Vane Integrated Avionics)',
+    code: 'V.I.A (Vane Integrated Avionics)',
+    title: 'V.I.A (Vane Integrated Avionics)',
     summary: 'Four-servo TVC flight controller on ESP32 with dual-core FreeRTOS.',
     description:
-      'Four-servo thrust vector control system built around an ESP32, with a dual-core FreeRTOS architecture running PID control at 200 Hz on one core and telemetry and status LEDs on the other. Attitude sensing via a BNO08x IMU over I2C, with ESP-NOW auto-pairing telemetry to a browser-based ground dashboard and dual SD card / LittleFS data logging.',
-    tags: ['ESP32', 'FreeRTOS', 'C/C++', 'PlatformIO', 'BNO08x IMU', 'PID control'],
+      'V.I.A. (Vane Integrated Avionics) is a custom flight computer I designed and built to provide full attitude and position control of an EDF Hopper through vane based thrust vector control. The system is built around a custom PCB I engineered in KiCad, integrating a BNO08x IMU, status LEDs, and an ESP32 microcontroller, along with power distribution, I2C sensor interfacing, and real time wireless telemetry broadcasting over ESP-NOW. On the firmware side, I developed cascaded PID control logic in C++ running on a dedicated 200 Hz FreeRTOS control loop split across the ESP32s dual cores to regulate vehicle altitude, attitude, and position, with SD card data logging built in for post flight analysis and control tuning.'],
     specs: [
-      { label: 'Compute', value: 'ESP32, dual-core FreeRTOS' },
-      { label: 'Control loop', value: 'PID at 200 Hz (core 1)' },
-      { label: 'Telemetry / LED', value: 'core 0' },
+      { label: 'Compute', value: 'ESP32-S3' },
       { label: 'Attitude sensing', value: 'BNO08x IMU over I2C' },
       { label: 'Telemetry link', value: 'ESP-NOW to browser dashboard' },
-      { label: 'Data logging', value: 'SD card + LittleFS' },
-      { label: 'Actuation', value: '4x servo, thrust vector control' },
-      { label: 'Toolchain', value: 'PlatformIO' },
+      { label: 'Data logging', value: 'Flash Chip for immdiete data logging with a transfer over to MicroSD during a landed state' },
+      { label: 'Actuation', value: '4 Digital Servos direct the EDFs airflow' },
+      { label: 'Toolchain', value: 'VScode + PlatformIO' },
     ],
   },
   {
