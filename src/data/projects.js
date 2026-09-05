@@ -5,7 +5,7 @@ export const projects = [
     title: 'V.I.A (Vane Integrated Avionics)',
     summary: 'Four-servo TVC flight controller on ESP32 with dual-core FreeRTOS.',
     description:
-      'V.I.A. (Vane Integrated Avionics) is a custom flight computer I designed and built to provide full attitude and position control of an EDF Hopper through vane based thrust vector control. The system is built around a custom PCB I engineered in KiCad, integrating a BNO08x IMU, status LEDs, and an ESP32 microcontroller, along with power distribution, I2C sensor interfacing, and real time wireless telemetry broadcasting over ESP-NOW. On the firmware side, I developed cascaded PID control logic in C++ running on a dedicated 200 Hz FreeRTOS control loop split across the ESP32s dual cores to regulate vehicle altitude, attitude, and position, with SD card data logging built in for post flight analysis and control tuning.'],
+      'V.I.A. (Vane Integrated Avionics) is a custom flight computer I designed and built to provide full attitude and position control of an EDF Hopper through vane based thrust vector control. The system is built around a custom PCB I engineered in KiCad, integrating a BNO08x IMU, status LEDs, and an ESP32 microcontroller, along with power distribution, I2C sensor interfacing, and real time wireless telemetry broadcasting over ESP-NOW. On the firmware side, I developed cascaded PID control logic in C++ running on a dedicated 200 Hz FreeRTOS control loop split across the ESP32s dual cores to regulate vehicle altitude, attitude, and position, with SD card data logging built in for post flight analysis and control tuning.',
     specs: [
       { label: 'Compute', value: 'ESP32-S3' },
       { label: 'Attitude sensing', value: 'BNO08x IMU over I2C' },
