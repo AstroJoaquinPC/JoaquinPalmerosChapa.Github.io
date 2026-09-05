@@ -20,7 +20,7 @@ export const projects = [
        { src: 'photos/via/hopper-bench.jpg', caption: 'EDF Hopper on the test bench' },
     ],
     models: [
-       { name: 'Test', obj: 'models\via\EDFAsembly.obj', mtl: 'models\via\EDFAsembly.mtl' },
+       { name: 'Test', obj: 'models/via/EDFAsembly.obj', mtl: 'models/via/EDFAsembly.mtl' },
     ],
   },
   {
