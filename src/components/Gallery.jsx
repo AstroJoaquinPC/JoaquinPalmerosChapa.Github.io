@@ -2,41 +2,81 @@ import { useEffect, useState } from 'react'
 import { asset } from '../utils/asset.js'
 
 export default function Gallery({ images }) {
-  const [openIndex, setOpenIndex] = useState(null)
+  const [active, setActive] = useState(0)
+  const [lightboxOpen, setLightboxOpen] = useState(false)
 
   useEffect(() => {
-    if (openIndex === null) return
+    if (!lightboxOpen) return
     function handleKey(e) {
-      if (e.key === 'Escape') setOpenIndex(null)
-      if (e.key === 'ArrowRight') setOpenIndex((i) => (i + 1) % images.length)
-      if (e.key === 'ArrowLeft') setOpenIndex((i) => (i - 1 + images.length) % images.length)
+      if (e.key === 'Escape') setLightboxOpen(false)
+      if (e.key === 'ArrowRight') setActive((i) => (i + 1) % images.length)
+      if (e.key === 'ArrowLeft') setActive((i) => (i - 1 + images.length) % images.length)
     }
     window.addEventListener('keydown', handleKey)
     return () => window.removeEventListener('keydown', handleKey)
-  }, [openIndex, images])
+  }, [lightboxOpen, images])
 
   if (!images || images.length === 0) return null
+
+  const current = images[active]
 
   return (
     <div className="gallery-section">
       <h2>Photos</h2>
-      <div className="gallery-grid">
-        {images.map((img, i) => (
-          <button
-            type="button"
-            className="gallery-thumb"
-            key={img.src}
-            onClick={() => setOpenIndex(i)}
-            aria-label={`Open photo${img.caption ? ': ' + img.caption : ''}`}
-          >
-            <img src={asset(img.src)} alt={img.caption || ''} loading="lazy" />
-          </button>
-        ))}
+
+      <div className="photo-viewer">
+        <button
+          type="button"
+          className="photo-frame"
+          onClick={() => setLightboxOpen(true)}
+          aria-label={`Enlarge photo${current.caption ? ': ' + current.caption : ''}`}
+        >
+          <img src={asset(current.src)} alt={current.caption || ''} />
+        </button>
+
+        {images.length > 1 && (
+          <>
+            <button
+              type="button"
+              className="photo-frame-nav photo-frame-prev"
+              aria-label="Previous photo"
+              onClick={() => setActive((i) => (i - 1 + images.length) % images.length)}
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              className="photo-frame-nav photo-frame-next"
+              aria-label="Next photo"
+              onClick={() => setActive((i) => (i + 1) % images.length)}
+            >
+              ›
+            </button>
+          </>
+        )}
+
+        {current.caption && <p className="photo-caption">{current.caption}</p>}
+
+        {images.length > 1 && (
+          <div className="photo-thumbs">
+            {images.map((img, i) => (
+              <button
+                key={img.src}
+                type="button"
+                className={`photo-thumb ${i === active ? 'photo-thumb-active' : ''}`}
+                onClick={() => setActive(i)}
+                aria-label={`Show photo${img.caption ? ': ' + img.caption : ''}`}
+              >
+                <img src={asset(img.src)} alt="" loading="lazy" />
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
-      {openIndex !== null && (
-        <div className="lightbox" role="dialog" aria-modal="true" onClick={() => setOpenIndex(null)}>
-          <button className="lightbox-close" onClick={() => setOpenIndex(null)} aria-label="Close">
+      {lightboxOpen && (
+        <div className="lightbox" role="dialog" aria-modal="true" onClick={() => setLightboxOpen(false)}>
+          <button className="lightbox-close" onClick={() => setLightboxOpen(false)} aria-label="Close">
             ×
           </button>
           {images.length > 1 && (
@@ -45,15 +85,15 @@ export default function Gallery({ images }) {
               aria-label="Previous photo"
               onClick={(e) => {
                 e.stopPropagation()
-                setOpenIndex((i) => (i - 1 + images.length) % images.length)
+                setActive((i) => (i - 1 + images.length) % images.length)
               }}
             >
               ‹
             </button>
           )}
           <figure className="lightbox-figure" onClick={(e) => e.stopPropagation()}>
-            <img src={asset(images[openIndex].src)} alt={images[openIndex].caption || ''} />
-            {images[openIndex].caption && <figcaption>{images[openIndex].caption}</figcaption>}
+            <img src={asset(current.src)} alt={current.caption || ''} />
+            {current.caption && <figcaption>{current.caption}</figcaption>}
           </figure>
           {images.length > 1 && (
             <button
@@ -61,7 +101,7 @@ export default function Gallery({ images }) {
               aria-label="Next photo"
               onClick={(e) => {
                 e.stopPropagation()
-                setOpenIndex((i) => (i + 1) % images.length)
+                setActive((i) => (i + 1) % images.length)
               }}
             >
               ›
