@@ -43,7 +43,7 @@ export default function Home() {
       <header className="hero wrap">
         <ThrustCurve />
         <p className="hero-eyebrow">Aerospace Engineering</p>
-        <h1>Building things that *hopefully* get off the ground.</h1>
+        <h1>Building things that get off the ground.</h1>
         <p>
           Working towards an B.S. Aerospace Engineering degree at Embry-Riddle Aeronautical University and an
           active member of the Experimental Rocket Propulsion Lab. I work across flight
