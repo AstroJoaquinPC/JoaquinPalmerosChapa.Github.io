@@ -13,35 +13,26 @@ function ThrustCurve() {
 
 const skillGroups = [
   {
-    heading: 'Design & analysis',
-    items: ['CAD — Onshape, AutoCAD', 'NASA CEA propulsion analysis', 'MATLAB', 'Engineering documentation'],
-  },
-  {
     heading: 'Software',
-    items: ['Python', 'C/C++ (embedded)', 'Flight software architecture', 'Test tooling & automation'],
+    items: ['Autodesk Inventor', 'Onshape', 'CATIA', 'KiCAD', 'Ansys'],
   },
   {
-    heading: 'Hardware & test',
-    items: ['Experimental test systems', 'High-pressure system assembly', 'Manufacturing', 'Avionics integration'],
+    heading: 'Programming',
+    items: ['Python', 'C/C++', 'MATLAB', ''],
+  },
+  {
+    heading: 'Manufacturing & assembly',
+    items: ['Soldering', 'Componsites', 'FDM and Resin 3D printing', 'PCB Layout, Routing, and Assembly'],
   },
 ]
 
 const otherWork = [
   {
-    label: 'Software tools',
+    label: 'Launch Media',
     detail:
-      'Built a Python/Flask watermarking tool using FFmpeg for images and video, packaged as a standalone Windows executable with PyInstaller. Also built a Canvas-to-Todoist sync tool handling API rate limits and course-specific labeling.',
+      'I am apart of a group named Launch Heaven Media that produces photos, videos, and livestreams of launchs all over the country. I am the main Livestream engineer and camera operator for the group, and manage the hardware and software that makes the livestreams possible. I also produce photos and videos for the group.',
   },
-  {
-    label: 'Photo & video',
-    detail:
-      'Shoot and edit launch and test footage on a Canon R5 Mark II and R7, with a DaVinci Resolve workflow tuned for high dynamic range footage of engine tests and flights.',
-  },
-  {
-    label: 'PC hardware',
-    detail:
-      'Refurbish and sell PCs, with hands-on experience diagnosing, sourcing, and reselling hardware — the starting point for a lot of the electronics troubleshooting instinct used in flight hardware work.',
-  },
+  
 ]
 
 export default function Home() {
@@ -51,24 +42,23 @@ export default function Home() {
     <>
       <header className="hero wrap">
         <ThrustCurve />
-        <p className="hero-eyebrow">Aerospace engineering / propulsion & flight control</p>
-        <h1>Building the systems that get things off the ground.</h1>
+        <p className="hero-eyebrow">Aerospace Engineering</p>
+        <h1>Building things that *hopefully* get off the ground.</h1>
         <p>
-          B.S. Aerospace Engineering candidate at Embry-Riddle Aeronautical University and
+          Working towards an B.S. Aerospace Engineering degree at Embry-Riddle Aeronautical University and an
           active member of the Experimental Rocket Propulsion Lab. I work across flight
           control software, propulsion hardware, and the test infrastructure that connects them.
         </p>
         <div className="hero-status">
           <span className="dot" aria-hidden="true" />
-          Currently building TVC-04 and contributing to ERPL's Draco engine program
+          Currently building V.I.A, Current, and contributing to ERPL's MOE flight Vehicle.
         </div>
       </header>
 
       <section className="section wrap" id="work">
-        <h2>Selected work</h2>
+        <h2>Active and past work</h2>
         <p className="section-intro">
-          A log of propulsion, flight control, and RF work — mostly through ERPL and
-          personal rocketry projects.
+          A log of my current projects and past projects in aerospace engineering, software, and other areas. Click on a project to see more details.
         </p>
         <div className="log">
           {projects.map((p) => (
