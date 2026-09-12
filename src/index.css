@@ -412,6 +412,24 @@ button:focus-visible {
   color: var(--ink-dim);
 }
 
+.spec-link {
+  color: var(--steel);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.spec-link-arrow {
+  font-size: 0.8em;
+}
+
+.spec-note {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  margin-top: 4px;
+}
+
 @media (max-width: 520px) {
   .spec-row {
     grid-template-columns: 1fr;

@@ -1,5 +1,34 @@
 export const projects = [
   {
+    slug: 'moe-fin-can',
+    code: 'ERPL-01',
+    title: 'MOE Fin Can — Design and Manufacturing',
+    summary: 'Lead for the fin control assembly on ERPLs high-power launch vehicle, MOE.',
+    description:
+      'Lead for the MOE Fin Can at ERPL, owning aerodynamic and structural performance for the fin control assembly on MOE, a high-power rocket with a design max velocity of Mach 1.9 (630 m/s) and a 60,000 ft apogee. Simulated fin control authority across flight regimes to select the optimal aerodynamic geometry, then ran Ansys Fluent CFD to determine peak aerodynamic loading on the fin structure and verified those results independently with hand calculations in Python before committing to a rigid, high-load-bearing connection to the vehicle body. Ran flutter velocity analysis across candidate fin materials, and selected carbon fiber for the strength-to-weight margin it holds at max velocity. Now preparing a tip-to-tip fiberglass layup to reinforce the structure, and compiled the bill of materials for procurement and manufacturing.',
+    tags: ['CFD', 'Ansys Fluent', 'Composite materials', 'Python', 'Autodesk Inventor'],
+    specs: [
+      { label: 'Vehicle', value: 'MOE (Designed for Mach 1.9 (630 m/s), 60,000 ft apogee)'},
+      {
+         label: 'Calculations',
+         value: 'Calculations done in Python to cross-check Ansys Fluent CFD results and aerodynamic loading on the fin structurebefore committing to a rigid fin-to-body connection.',
+        href: 'https://github.com/AstroJoaquinPC/MOEFinCalculations',
+        note: 'Manual calculations cross-checking the Ansys Fluent CFD results and flutter velocity analysis before committing to the fin-to-body connection.',
+      },
+      { label: 'Material selection', value: '1/4" Quasi-isotropic carbon fiber'},
+      { label: 'Primary structure', value:'E-120HP epoxy resin with 2" fillets at the roots'},
+      { label: 'Secondary structure', value: 'Tip-to-tip 7.5 Oz fiberglass layup (in progress)'},
+      { label: 'Margin of safety', value: 'A value of atleast 2 accross all flight regimes' },
+    ],
+    images: [
+    { src: 'photos/moe-fin-can/MoeFinPressure.PNG', caption: 'The pressure distribution across the fin surface'},
+    { src: 'photos/moe-fin-can/MoeFinPressureWall.PNG', caption: 'Pressure at the leading and trailing edges' },
+    ],
+    models: [
+      // { name: 'Fin can assembly', obj: 'models/moe-fin-can/fincan.obj', mtl: 'models/moe-fin-can/fincan.mtl' },
+    ],
+  },
+  {
     slug: 'via',
     code: 'VIA-01',
     title: 'V.I.A. — Vane Integrated Avionics',

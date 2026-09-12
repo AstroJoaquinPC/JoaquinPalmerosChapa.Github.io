@@ -38,7 +38,17 @@ export default function ProjectDetail() {
           {project.specs.map((s) => (
             <div className="spec-row" key={s.label}>
               <dt>{s.label}</dt>
-              <dd>{s.value}</dd>
+              <dd>
+                {s.href ? (
+                  <a href={s.href} target="_blank" rel="noreferrer" className="spec-link">
+                    {s.value}
+                    <span className="spec-link-arrow">↗</span>
+                  </a>
+                ) : (
+                  s.value
+                )}
+                {s.note && <span className="spec-note">{s.note}</span>}
+              </dd>
             </div>
           ))}
         </div>

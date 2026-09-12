@@ -22,7 +22,7 @@ const skillGroups = [
   },
   {
     heading: 'Manufacturing & assembly',
-    items: ['Soldering', 'Componsites', 'FDM and Resin 3D printing', 'PCB Layout, Routing, and Assembly'],
+    items: ['Soldering', 'Composites', 'FDM and Resin 3D printing', 'PCB Layout, Routing, and Assembly'],
   },
 ]
 
@@ -56,7 +56,7 @@ export default function Home() {
       </header>
 
       <section className="section wrap" id="work">
-        <h2>Active and past work</h2>
+        <h2>Projects</h2>
         <p className="section-intro">
           A log of my current projects and past projects in aerospace engineering, software, and other areas. Click on a project to see more details.
         </p>
