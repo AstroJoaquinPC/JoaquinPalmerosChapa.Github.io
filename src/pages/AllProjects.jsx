@@ -9,9 +9,9 @@ export default function AllProjects() {
   return (
     <>
       <section className="section wrap" style={{ borderTop: 'none', paddingTop: '64px' }}>
-        <p className="hero-eyebrow">All work</p>
-        <h2 style={{ fontSize: '1.8rem' }}>Every logged project</h2>
-        <p className="section-intro">The full set — propulsion, flight control, and RF.</p>
+        <p className="hero-eyebrow"></p>
+        <h2 style={{ fontSize: '1.8rem' }}>All Projects</h2>
+        <p className="section-intro"></p>
         <div className="log">
           {projects.map((p) => (
             <Link to={`/projects/${p.slug}`} className="entry entry-link" key={p.slug}>

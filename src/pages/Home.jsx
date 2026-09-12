@@ -56,7 +56,7 @@ export default function Home() {
       </header>
 
       <section className="section wrap" id="work">
-        <h2>Projects</h2>
+        <h2>Most Recent Projects</h2>
         <p className="section-intro">
           A log of my current projects and past projects in aerospace engineering, software, and other areas. Click on a project to see more details.
         </p>
