@@ -21,8 +21,8 @@ export const projects = [
       { label: 'Margin of safety', value: 'A value of atleast 2 accross all flight regimes' },
     ],
     images: [
-    { src: 'photos/moe-fin-can/MoeFinPressure.PNG', caption: 'The pressure distribution across the fin surface'},
-    { src: 'photos/moe-fin-can/MoeFinPressureWall.PNG', caption: 'Pressure at the leading and trailing edges' },
+    { src: 'photos/moe-fin-can/MoeFinPressure.png', caption: 'The pressure distribution across the fin surface'},
+    { src: 'photos/moe-fin-can/MoeFinPressureWall.png', caption: 'Pressure at the leading and trailing edges' },
     ],
     models: [
       // { name: 'Fin can assembly', obj: 'models/moe-fin-can/fincan.obj', mtl: 'models/moe-fin-can/fincan.mtl' },
