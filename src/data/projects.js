@@ -18,7 +18,7 @@ export const projects = [
       { label: 'Material selection', value: '1/4" Quasi-isotropic carbon fiber'},
       { label: 'Primary structure', value:'E-120HP epoxy resin with 2" fillets at the roots'},
       { label: 'Secondary structure', value: 'Tip-to-tip 7.5 Oz fiberglass layup (in progress)'},
-      { label: 'Margin of safety', value: 'A value of atleast 2 accross all flight regimes' },
+      { label: 'Margin of safety', value: 'A value of atleast 2 across all flight regimes' },
     ],
     images: [
     { src: 'photos/moe-fin-can/MoeFinPressure.png', caption: 'The pressure distribution across the fin surface'},
