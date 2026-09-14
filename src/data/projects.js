@@ -25,7 +25,7 @@ export const projects = [
     { src: 'photos/moe-fin-can/MoeFinPressureWall.png', caption: 'Pressure at the leading and trailing edges' },
     ],
     models: [
-      // { name: 'Fin can assembly', obj: 'models/moe-fin-can/fincan.obj', mtl: 'models/moe-fin-can/fincan.mtl' },
+     { name: 'Fin can assembly', obj: 'models/moe-fin-can/MoeFinCan.obj', mtl: 'models/moe-fin-can/MoeFinCan.mtl' },
     ],
   },
   {
