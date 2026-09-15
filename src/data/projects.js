@@ -45,6 +45,7 @@ export const projects = [
       { label: 'Coding Language', value: 'VS Code + PlatformIO' },
     ],
     images: [
+       { src: 'photos/via/PrototypeAndV1.jpg', caption: 'VIA Prototype and Version 1 boards' },
        { src: 'photos/via/VIA-Disassemble.jpg', caption: 'Front of PCB' },
        { src: 'photos/via/ViaBack.jpg', caption: 'Back of PCB' },
        { src: 'photos/via/DigitalVIa.png', caption: 'VIA in the PCB Editor' },
@@ -73,6 +74,9 @@ export const projects = [
     models: [
        { name: 'Current V1 Hopper', obj: 'models/current/EDFAsembly.obj', mtl: 'models/current/EDFAsembly.mtl' },
     ],
+    videos: [
+  { type: 'file', src: 'videos/current/ServoTests.mp4', caption: 'VIA completing startup sequence and going into idle state' },
+],
   },
 ]
 

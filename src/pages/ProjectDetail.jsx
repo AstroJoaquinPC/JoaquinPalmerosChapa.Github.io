@@ -3,6 +3,7 @@ import { Suspense, lazy } from 'react'
 import { getProjectBySlug } from '../data/projects.js'
 import Footer from '../components/Footer.jsx'
 import Gallery from '../components/Gallery.jsx'
+import VideoSection from '../components/VideoSection.jsx'
 import useScrollToHash from '../hooks/useScrollToHash.js'
 
 const ModelSection = lazy(() => import('../components/ModelSection.jsx'))
@@ -69,6 +70,7 @@ export default function ProjectDetail() {
             <ModelSection models={project.models} />
           </Suspense>
         )}
+        <VideoSection videos={project.videos} />
         <Gallery images={project.images} />
       </section>
       <Footer />
