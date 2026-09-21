@@ -1,12 +1,12 @@
 import { Link, useParams, Navigate } from 'react-router-dom'
-import { Suspense, lazy } from 'react'
 import { getProjectBySlug } from '../data/projects.js'
-import Footer from '../components/Footer.jsx'
-import Gallery from '../components/Gallery.jsx'
-import VideoSection from '../components/VideoSection.jsx'
+import StatusTag from '../components/StatusTag.jsx'
+import MediaPanel from '../components/MediaPanel.jsx'
+import DetailsPanel from '../components/DetailsPanel.jsx'
 import useScrollToHash from '../hooks/useScrollToHash.js'
 
-const ModelSection = lazy(() => import('../components/ModelSection.jsx'))
+// The tab you picked stays picked as you move between projects.
+const remembered = { media: null, details: null }
 
 export default function ProjectDetail() {
   useScrollToHash()
@@ -18,62 +18,23 @@ export default function ProjectDetail() {
   }
 
   return (
-    <>
-      <section className="section wrap" style={{ borderTop: 'none', paddingTop: '64px' }}>
-        <Link to="/projects" className="back-link">
-          ← All projects
-        </Link>
-        <span className="entry-code" style={{ marginTop: '24px' }}>
-          {project.code}
-        </span>
-        <h1 className="project-title">{project.title}</h1>
-        <p className="project-description">{project.description}</p>
+    <section className="page wrap" key={project.slug}>
+      <Link to="/projects" className="back-link">
+        ← All projects
+      </Link>
+      <StatusTag status={project.status} />
+      <h1 className="page-title project-title">{project.title}</h1>
 
-        <ul className="tags" style={{ marginBottom: '40px' }}>
-          {project.tags.map((t) => (
-            <li key={t}>{t}</li>
-          ))}
-        </ul>
-
-        <div className="spec-table">
-          {project.specs.map((s) => (
-            <div className="spec-row" key={s.label}>
-              <dt>{s.label}</dt>
-              <dd>
-                {s.href ? (
-                  <a href={s.href} target="_blank" rel="noreferrer" className="spec-link">
-                    {s.value}
-                    <span className="spec-link-arrow">↗</span>
-                  </a>
-                ) : (
-                  s.value
-                )}
-                {s.note && <span className="spec-note">{s.note}</span>}
-              </dd>
-            </div>
-          ))}
-        </div>
-
-        {project.models && project.models.length > 0 && (
-          <Suspense
-            fallback={
-              <div className="model-section">
-                <h2>CAD model</h2>
-                <div className="model-viewer">
-                  <div className="model-overlay" style={{ position: 'static', height: '420px' }}>
-                    Loading viewer…
-                  </div>
-                </div>
-              </div>
-            }
-          >
-            <ModelSection models={project.models} />
-          </Suspense>
-        )}
-        <VideoSection videos={project.videos} />
-        <Gallery images={project.images} />
-      </section>
-      <Footer />
-    </>
+      <MediaPanel
+        project={project}
+        initial={remembered.media}
+        onChange={(id) => (remembered.media = id)}
+      />
+      <DetailsPanel
+        project={project}
+        initial={remembered.details}
+        onChange={(id) => (remembered.details = id)}
+      />
+    </section>
   )
 }

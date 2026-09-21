@@ -7,9 +7,15 @@ import { asset } from '../utils/asset.js'
 
 // Renders a single .obj model (with an optional .mtl material file) in an
 // interactive canvas: drag to orbit, scroll to zoom, right-drag to pan.
-export default function ModelViewer({ objSrc, mtlSrc, name }) {
+export default function ModelViewer({ objSrc, mtlSrc, name, active = true }) {
   const containerRef = useRef(null)
+  const activeRef = useRef(active)
   const [status, setStatus] = useState('loading') // loading | ready | error
+
+  // While another tab is showing, keep the loaded model in memory but stop drawing.
+  useEffect(() => {
+    activeRef.current = active
+  }, [active])
 
   useEffect(() => {
     const container = containerRef.current
@@ -29,12 +35,14 @@ export default function ModelViewer({ objSrc, mtlSrc, name }) {
     renderer.setSize(width, height)
     container.appendChild(renderer.domElement)
 
-    const ambient = new THREE.AmbientLight(0xffffff, 0.7)
+    const ambient = new THREE.AmbientLight(0xffffff, 0.6)
     scene.add(ambient)
+    const sky = new THREE.HemisphereLight(0xbcd4ff, 0x1a2a44, 0.7)
+    scene.add(sky)
     const key = new THREE.DirectionalLight(0xffffff, 1.1)
     key.position.set(5, 8, 6)
     scene.add(key)
-    const fill = new THREE.DirectionalLight(0x7fa8c9, 0.4)
+    const fill = new THREE.DirectionalLight(0x86aed6, 0.35)
     fill.position.set(-6, -3, -4)
     scene.add(fill)
 
@@ -50,7 +58,7 @@ export default function ModelViewer({ objSrc, mtlSrc, name }) {
       object.position.sub(center)
 
       const maxDim = Math.max(size.x, size.y, size.z) || 1
-      const distance = maxDim * 2.2
+      const distance = maxDim * 1.5
 
       camera.position.set(distance, distance * 0.7, distance)
       camera.near = maxDim / 100
@@ -63,14 +71,53 @@ export default function ModelViewer({ objSrc, mtlSrc, name }) {
 
     function defaultMaterial() {
       return new THREE.MeshStandardMaterial({
-        color: 0x9aa3ad,
+        color: 0xa3b2c9,
         metalness: 0.25,
         roughness: 0.55,
       })
     }
 
+    const slate = new THREE.Color(0x33435f)
+
+    // A material that points at a texture file that isn't in the repo would
+    // render pure black. Drop the missing texture and use a dark slate instead.
+    // (Add the texture file next to the model and this leaves it alone.)
+    function fixBrokenTextures() {
+      scene.traverse((child) => {
+        if (!child.isMesh) return
+        const list = Array.isArray(child.material) ? child.material : [child.material]
+        list.forEach((m) => {
+          if (m && m.map && !(m.map.image && m.map.image.width)) {
+            m.map = null
+            m.color.copy(slate)
+            if ('specular' in m) m.specular.setScalar(0.15)
+            m.needsUpdate = true
+          }
+        })
+      })
+    }
+
+    const manager = new THREE.LoadingManager()
+    manager.onError = fixBrokenTextures
+
+    // Nearly black parts vanish against a dark page, so lift them to slate.
+    function liftDarkMaterials(object) {
+      object.traverse((child) => {
+        if (!child.isMesh) return
+        const list = Array.isArray(child.material) ? child.material : [child.material]
+        list.forEach((m) => {
+          if (!m || !m.color) return
+          const lum = 0.2126 * m.color.r + 0.7152 * m.color.g + 0.0722 * m.color.b
+          if (lum < 0.08) {
+            m.color.copy(slate)
+            if ('roughness' in m) m.roughness = 0.6
+          }
+        })
+      })
+    }
+
     function loadObj(materials) {
-      const loader = new OBJLoader()
+      const loader = new OBJLoader(manager)
       if (materials) loader.setMaterials(materials)
       loader.load(
         asset(objSrc),
@@ -81,7 +128,9 @@ export default function ModelViewer({ objSrc, mtlSrc, name }) {
               if (child.isMesh) child.material = defaultMaterial()
             })
           }
+          liftDarkMaterials(object)
           scene.add(object)
+          fixBrokenTextures()
           frameObject(object)
           setStatus('ready')
         },
@@ -94,7 +143,7 @@ export default function ModelViewer({ objSrc, mtlSrc, name }) {
     }
 
     if (mtlSrc) {
-      new MTLLoader().load(
+      new MTLLoader(manager).load(
         asset(mtlSrc),
         (materials) => {
           materials.preload()
@@ -109,6 +158,7 @@ export default function ModelViewer({ objSrc, mtlSrc, name }) {
 
     function animate() {
       frameId = requestAnimationFrame(animate)
+      if (!activeRef.current) return
       controls.update()
       renderer.render(scene, camera)
     }
@@ -117,6 +167,7 @@ export default function ModelViewer({ objSrc, mtlSrc, name }) {
     function handleResize() {
       const w = container.clientWidth
       const h = container.clientHeight
+      if (!w || !h) return
       camera.aspect = w / h
       camera.updateProjectionMatrix()
       renderer.setSize(w, h)
@@ -155,7 +206,7 @@ export default function ModelViewer({ objSrc, mtlSrc, name }) {
           Couldn't load {name || 'this model'}. Check the file path.
         </div>
       )}
-      <p className="model-hint">Drag to rotate · scroll to zoom · right-drag to pan</p>
+      <p className="model-hint">Drag to rotate, scroll to zoom, right-drag to pan</p>
     </div>
   )
 }
