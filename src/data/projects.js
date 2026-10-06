@@ -69,8 +69,8 @@ export const projects = [
     why: "I've always wanted to build a rocket hopper or a TVC-controlled rocket. That takes a very finely tuned control system, and a rocket doesn't give you much time to tune one. Current solves that. Because it's an EDF hopper, I can fly it and tune the controls over and over, working out the control loops and hardware before any of it goes on a rocket.",
     images: [
        { src: 'photos/current/CurrentAssembled.png', caption: 'Current Fully Assembled' },
-       { src: 'photos/current/CurrentAft.png', caption: 'The Bottom of the Vehicle' },
-       { src: 'photos/current/CurrentFoward.png', caption: 'The Top of the Vehicle' },
+       { src: 'photos/current/CurrentAft.jpg', caption: 'The Bottom of the Vehicle' },
+       { src: 'photos/current/CurrentFoward.jpg', caption: 'The Top of the Vehicle' },
     ],
     models: [
       { name: 'Current V1 Hopper', obj: 'models/current/EDFAsembly.obj', mtl: 'models/current/EDFAsembly.mtl' },
