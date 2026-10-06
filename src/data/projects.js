@@ -39,6 +39,50 @@ export const projects = [
     ],
     videos: [],
   },
+   {
+    slug: 'current',
+    status: 'active',
+    title: 'Current: EDF Hopper',
+    summary: 'A flight testbed platform for testing the V.I.A. flight computer and vane-based thrust vector control.',
+    description:
+      'Current is an EDF (Electric Ducted Fan) flight vehicle built as a testbed for validating flight control software and hardware in a real flight environment, ahead of a future thrust-vector-controlled rocket. The vehicle uses a 90mm EDF paired with four digital servos to vector airflow, enabling real-time attitude and position control through a cascaded PID architecture. Every component was designed in Autodesk Inventor, combining a 3D-printed airframe with a carbon fiber support structure to keep the vehicle light without sacrificing structural rigidity. The project serves as a stepping stone toward more complex TVC systems, letting me iterate on control loops and hardware integration in a lower-risk, hover-capable platform before committing to a full rocket flight.',
+    tags: ['Autodesk Inventor', '3D Printing', 'Dynamics', 'Simulation'],
+    materials: [
+      { label: 'Support structure', value: 'Carbon Fiber' },
+      { label: 'Main body', value: 'PETG' },
+      {
+        label: 'Power',
+        value:
+          '2 Independent systems. A 7.4 volt battery feeds into the servos, then stepped down to 3.3V for VIA. The EDF is powered separately by a 6S LiPo battery.',
+      },
+      { label: 'EDF interfacing', value: 'The EDF is controlled by an ESC which receives signals from the flight computer.' },
+    ],
+    requirements: [
+      'Deliver 3.5 kg of thrust at full power. Vehicle mass must stay below that to hover',
+      'Steer with four servo-actuated airvanes under cascaded PID control',
+      'Provide position and hover control',
+      'Keep the EDF (6S LiPo) and the servos and flight computer (7.4V) on independent power systems',
+      'Stay light but rigid, with a PETG body and carbon fiber support structure',
+      'Carry V.I.A. as its flight computer',
+    ],
+    analysis: null,
+    why: "I've always wanted to build a rocket hopper or a TVC-controlled rocket. That takes a very finely tuned control system, and a rocket doesn't give you much time to tune one. Current solves that. Because it's an EDF hopper, I can fly it and tune the controls over and over, working out the control loops and hardware before any of it goes on a rocket.",
+    images: [
+       { src: 'photos/current/CurrentAssembled.png', caption: 'Current Fully Assembled' },
+       { src: 'photos/current/CurrentAft.png', caption: 'The Bottom of the Vehicle' },
+       { src: 'photos/current/CurrentFoward.png', caption: 'The Top of the Vehicle' },
+    ],
+    models: [
+      { name: 'Current V1 Hopper', obj: 'models/current/EDFAsembly.obj', mtl: 'models/current/EDFAsembly.mtl' },
+    ],
+    videos: [
+      {
+        type: 'file',
+        src: 'videos/current/ServoTests.mov',
+        caption: 'VIA completing startup sequence and going into idle state',
+      },
+    ],
+  },
   {
     slug: 'via',
     status: 'active',
@@ -72,46 +116,6 @@ export const projects = [
       { name: 'VIA Flight Computer', obj: 'models/via/VIA Flight Computer.obj', mtl: 'models/via/VIA Flight Computer.mtl' },
     ],
     videos: [],
-  },
-  {
-    slug: 'current',
-    status: 'active',
-    title: 'Current: EDF Hopper',
-    summary: 'A flight testbed platform for testing the V.I.A. flight computer and vane-based thrust vector control.',
-    description:
-      'Current is an EDF (Electric Ducted Fan) flight vehicle built as a testbed for validating flight control software and hardware in a real flight environment, ahead of a future thrust-vector-controlled rocket. The vehicle uses a 90mm EDF paired with four digital servos to vector airflow, enabling real-time attitude and position control through a cascaded PID architecture. Every component was designed in Autodesk Inventor, combining a 3D-printed airframe with a carbon fiber support structure to keep the vehicle light without sacrificing structural rigidity. The project serves as a stepping stone toward more complex TVC systems, letting me iterate on control loops and hardware integration in a lower-risk, hover-capable platform before committing to a full rocket flight.',
-    tags: ['Autodesk Inventor', '3D Printing', 'Dynamics', 'Simulation'],
-    materials: [
-      { label: 'Support structure', value: 'Carbon Fiber' },
-      { label: 'Main body', value: 'PETG' },
-      {
-        label: 'Power',
-        value:
-          '2 Independent systems. A 7.4 volt battery feeds into the servos, then stepped down to 3.3V for VIA. The EDF is powered separately by a 6S LiPo battery.',
-      },
-      { label: 'EDF interfacing', value: 'The EDF is controlled by an ESC which receives signals from the flight computer.' },
-    ],
-    requirements: [
-      'Deliver 3.5 kg of thrust at full power. Vehicle mass must stay below that to hover',
-      'Steer with four servo-actuated airvanes under cascaded PID control',
-      'Provide position and hover control',
-      'Keep the EDF (6S LiPo) and the servos and flight computer (7.4V) on independent power systems',
-      'Stay light but rigid, with a PETG body and carbon fiber support structure',
-      'Carry V.I.A. as its flight computer',
-    ],
-    analysis: null,
-    why: "I've always wanted to build a rocket hopper or a TVC-controlled rocket. That takes a very finely tuned control system, and a rocket doesn't give you much time to tune one. Current solves that. Because it's an EDF hopper, I can fly it and tune the controls over and over, working out the control loops and hardware before any of it goes on a rocket.",
-    images: [],
-    models: [
-      { name: 'Current V1 Hopper', obj: 'models/current/EDFAsembly.obj', mtl: 'models/current/EDFAsembly.mtl' },
-    ],
-    videos: [
-      {
-        type: 'file',
-        src: 'videos/current/ServoTests.mp4',
-        caption: 'VIA completing startup sequence and going into idle state',
-      },
-    ],
   },
 ]
 
